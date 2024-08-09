@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jumppod
+  labels:
+    app: jumppod
+spec:
+  selector:
+    app: jumppod
+  ports:
+    - name: ssh
+      port: 2024
+      targetPort: 22
+  type: LoadBalancer

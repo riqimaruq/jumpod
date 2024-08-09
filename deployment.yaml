@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jumppod
+  labels:
+    app: jumppod
+spec:
+  selector:
+    matchLabels:
+      app: jumppod
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jumppod
+    spec:
+      containers:
+      - name: jumppod
+        image: shareservicecrstg.azurecr.io/jumppodv2:$RELEASE_NUMBER
+        ports:
+        - name: ssh
+          containerPort: 22
+      imagePullSecrets:
+      - name: shareservicecrstg-regcred
