@@ -15,7 +15,6 @@ RUN useradd -m --password $(openssl passwd -1 Pesen14045_#) ${USER} -s /bin/bash
     && mkdir -p /home/${USER}/.kube \
     && touch /var/log/auth.log
 
-ADD kubeconfig /home/${USER}/.kube/config
 RUN chown -R ${USER}:${GROUP} /home/${USER}/.kube
 
 CMD service ssh start && tail -f /var/log/auth.log
